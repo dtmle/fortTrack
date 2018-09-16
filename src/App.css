@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+}
+
+.Player {
+  display: inline-block;
+  width: 15%;
+}
