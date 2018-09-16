@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { Player } from "./main/Player";
 import { SendButton, AddButton, RemoveButton } from "./input/Button";
+//import { InputField } from "./input/InputField";
 
 class App extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class App extends Component {
     this.state = {
       searched: false,
       best: "Who da best?",
-      players: [<Player searched={false} />]
+      players: [<Player key={"player_" + 1} searched={false} />]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
@@ -18,7 +19,7 @@ class App extends Component {
 
   handleAddClick() {
     if (this.state.players.length < 4) {
-      let players = this.state.players;
+      let players = Object.assign([], this.state.players);
       players.push(<Player searched={false} />);
       this.setState({ players: players });
     }
@@ -60,15 +61,11 @@ class App extends Component {
   handleRemoveClick(_, i) {
     if (this.state.players.length > 1) {
       console.log(i);
-      let players = this.state.players;
-      delete players[i];
-      let newArr = [];
-      players.forEach(el => {
-        if (el !== null) {
-          newArr.push(el);
-        }
+      this.setState({
+        players: this.state.players.filter((_, ind) => {
+          return ind !== i;
+        })
       });
-      this.setState({ players: newArr });
     }
   }
 
@@ -79,6 +76,11 @@ class App extends Component {
       return (
         <div key={divKey + i}>
           {el}
+          {/* <InputField
+            value={this.state.name}
+            onChange={this.handleChange}
+            valid={this.state.valid}
+          /> */}
           <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
         </div>
       );
