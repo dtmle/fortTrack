@@ -55,7 +55,7 @@ export class PlayerList extends React.Component {
         return <Stats name={ele} />;
       } else {
         return (
-          <div key={"player_" + (i + 1)}>
+          <div className="Player" key={"player_" + (i + 1)}>
             <Player name={ele} />
             <InputField
               value={this.state.players[i]}
@@ -74,7 +74,7 @@ export class PlayerList extends React.Component {
     const players = this.makePlayers();
     return (
       <div>
-        <div className="Player">{players}</div>
+        <div className="PlayerList">{players}</div>
         <div className="AddButton">
           <AddButton
             count={this.state.players.length}

@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PlayerList />
+        <PlayerList searching={this.state.searching}/>
         <SendButton text={this.state.buttonPhrase} onClick={this.handleSubmit}/>
       </div>
     );
