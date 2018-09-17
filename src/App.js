@@ -1,78 +1,37 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Player } from "./main/Player";
-import { SendButton, AddButton, RemoveButton } from "./input/Button";
-//import { InputField } from "./input/InputField";
+import { PlayerList } from "./main/PlayerList";
+import { SendButton } from "./input/Buttons";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searched: false,
-      best: "Who da best?",
-      players: [1]
+      searching: false,
+      buttonPhrase: "Who da best?"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleAddClick = this.handleAddClick.bind(this);
-    this.handleRemoveClick = this.handleRemoveClick.bind(this);
-  }
-
-  handleAddClick() {
-    if (this.state.players.length < 4) {
-      let players = Object.assign([], this.state.players);
-      players.push(players.length+1);
-      this.setState({ players: players });
-    }
   }
 
   handleSubmit() {
-    if (this.state.searched) {
+    if (this.state.searching) {
       this.setState({
-        searched: false,
-        best: "Who da best?",
+        searching: false,
+        buttonPhrase: "Who da best?"
       });
     } else {
       this.setState({
-        searched: true,
-        best: "Compare again",
-      });
-    }
-  }
-
-  handleRemoveClick(_, i) {
-    if (this.state.players.length > 1) {
-      this.setState({
-        players: this.state.players.filter((_, ind) => {
-          return ind !== i;
-        })
+        searching: true,
+        buttonPhrase: "Compare again"
       });
     }
   }
 
   render() {
-    let players = this.state.players;
-    let divKey = "player_";
-    players = players.map((el, i) => {
-      return (
-        <div key={divKey + i}>
-          <Player key={i} searched={this.state.searched}/>
-          <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
-        </div>
-      );
-    });
     return (
       <div className="App">
-        <div>
-          <br />
-          {players}
-          <br />
-        </div>
-        <AddButton
-          onClick={this.handleAddClick}
-          count={this.state.players.length}
-        />
-        <br />
-        <SendButton best={this.state.best} onSubmit={this.handleSubmit} />
+        <PlayerList />
+        <SendButton text={this.state.buttonPhrase} onClick={this.handleSubmit}/>
       </div>
     );
   }
