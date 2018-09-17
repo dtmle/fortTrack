@@ -55,15 +55,14 @@ export class PlayerList extends React.Component {
         return <Stats name={ele} />;
       } else {
         return (
-          <div className="Player" key={"player_" + (i + 1)}>
-            <Player name={ele} />
+          <Player name={ele} uniqueId={"player_" + (i + 1)}>
             <InputField
               value={this.state.players[i]}
               onChange={e => this.handleChange(e, i)}
               valid={this.state.valid[i]}
             />
             <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
-          </div>
+          </Player>
         );
       }
     });

@@ -7,7 +7,10 @@ export class Player extends React.Component {
       return <Stats name={this.props.name} />;
     } else {
       return (
+        <div className="Player" key={this.props.uniqueId}>
           <h1 className="playerName">{this.props.name}</h1>
+          {this.props.children}
+        </div>
       );
     }
   }
