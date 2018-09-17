@@ -18,8 +18,8 @@ export class AddButton extends React.Component {
       <button
         onClick={this.props.onClick}
         style={{
-          backgroundColor:
-            this.props.count === 4 ? "rgb(255, 0, 0)" : "rgb(255, 255, 255)"
+          visibility:
+            this.props.count === 4 ? "hidden" : "visible"
         }}
       >
         Add

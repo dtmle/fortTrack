@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       searched: false,
       best: "Who da best?",
-      players: [<Player key={"player_" + 1} searched={false} />]
+      players: [1]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
@@ -20,47 +20,27 @@ class App extends Component {
   handleAddClick() {
     if (this.state.players.length < 4) {
       let players = Object.assign([], this.state.players);
-      players.push(<Player searched={false} />);
+      players.push(players.length+1);
       this.setState({ players: players });
     }
   }
 
   handleSubmit() {
     if (this.state.searched) {
-      let players = this.changeToSearched(false);
       this.setState({
         searched: false,
         best: "Who da best?",
-        players: players
       });
     } else {
-      let players = this.changeToSearched(true);
       this.setState({
         searched: true,
         best: "Compare again",
-        players: players
       });
     }
-  }
-
-  changeToSearched(searched) {
-    let players = this.state.players;
-    let newArr = [];
-    if (searched) {
-      for (let i = 0; i < players.length; i++) {
-        newArr.push(<Player searched={true} />);
-      }
-    } else {
-      for (let i = 0; i < players.length; i++) {
-        newArr.push(<Player searched={false} />);
-      }
-    }
-    return newArr;
   }
 
   handleRemoveClick(_, i) {
     if (this.state.players.length > 1) {
-      console.log(i);
       this.setState({
         players: this.state.players.filter((_, ind) => {
           return ind !== i;
@@ -75,12 +55,7 @@ class App extends Component {
     players = players.map((el, i) => {
       return (
         <div key={divKey + i}>
-          {el}
-          {/* <InputField
-            value={this.state.name}
-            onChange={this.handleChange}
-            valid={this.state.valid}
-          /> */}
+          <Player key={i} searched={this.state.searched}/>
           <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
         </div>
       );
