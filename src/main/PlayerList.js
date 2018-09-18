@@ -1,17 +1,29 @@
 import React from "react";
-import { Player } from "./Player";
-import { Stats } from "./Stats";
-import { InputField, AddButton, RemoveButton } from "../input/Buttons";
+import { Player, Stats } from "./Player";
+import {
+  InputField,
+  AddButton,
+  RemoveButton,
+  SendButton
+} from "../input/Buttons";
 
 export class PlayerList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: ["Player 1"],
-      valid: [true]
+      players: [
+        {
+          name: "Player 1",
+          valid: true,
+          changed: false
+        }
+      ],
+      searching: false,
+      buttonPhrase: "Who da best?"
     };
     this.handleRemoveClick = this.handleRemoveClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleRemoveClick(_, i) {
@@ -26,40 +38,70 @@ export class PlayerList extends React.Component {
 
   handleChange(event, i) {
     let val = event.target.value;
-    let players = Object.assign([], this.state.players);
-    let validList = Object.assign([], this.state.valid);
-    players[i] = val;
+    let players = [...this.state.players];
+    players[i].name = val;
     if (val.length < 3) {
-      validList[i] = false;
-      this.setState({ players: players, valid: validList });
+      players[i].valid = players[i].changed = false;
+      this.setState({ players: players });
     } else {
-      validList[i] = true;
-      this.setState({ players: players, valid: validList });
+      players[i].valid = players[i].changed = true;
+      this.setState({
+        players: players,
+        buttonPhrase: "Who da best?"
+      });
     }
   }
 
   handleAddClick() {
     console.log(this);
     if (this.state.players.length < 4) {
-      let players = Object.assign([], this.state.players);
-      let validList = Object.assign([], this.state.valid);
-      players.push("Player " + (players.length + 1));
-      validList.push(true);
-      this.setState({ players: players, valid: validList });
+      let players = [...this.state.players];
+      players.push({
+        name: "Player " + (players.length + 1),
+        valid: true
+      });
+      this.setState({ players: players });
+    }
+  }
+
+  handleSubmit() {
+    let changed = true;
+    this.state.players.forEach(ele => {
+      if (!ele.changed) {
+        changed = false;
+      }
+    });
+    if (this.state.searching) {
+      this.setState({
+        searching: false,
+        buttonPhrase: "Who da best?"
+      });
+    }
+    if (!changed) {
+      this.setState({
+        searching: false,
+        buttonPhrase: "Player not changed!"
+      });
+    } else {
+      this.setState({
+        searching: true,
+        buttonPhrase: "Compare again"
+      });
     }
   }
 
   makePlayers() {
     const players = this.state.players.map((ele, i) => {
-      if (this.props.searching) {
-        return <Stats name={ele} />;
+      if (this.state.searching) {
+        return <Stats name={ele.name} />;
       } else {
         return (
-          <Player name={ele} uniqueId={"player_" + (i + 1)}>
+          <Player name={ele.name} uniqueId={"player_" + (i + 1)}>
             <InputField
-              value={this.state.players[i]}
+              value={ele.name}
               onChange={e => this.handleChange(e, i)}
-              valid={this.state.valid[i]}
+              valid={ele.valid}
+              changed={ele.changed}
             />
             <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
           </Player>
@@ -80,6 +122,11 @@ export class PlayerList extends React.Component {
             onClick={e => this.handleAddClick(e)}
           />
         </div>
+        <SendButton
+          className="SendButton"
+          text={this.state.buttonPhrase}
+          onClick={this.handleSubmit}
+        />
       </div>
     );
   }

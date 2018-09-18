@@ -1,5 +1,4 @@
 import React from "react";
-import { Stats } from "./Stats";
 
 export class Player extends React.Component {
   render() {
@@ -13,5 +12,19 @@ export class Player extends React.Component {
         </div>
       );
     }
+  }
+}
+
+export class Stats extends React.Component {
+  render() {
+    return (
+      <div className="Player">
+        <h1>{this.props.name}</h1>
+        <p>Wins</p>
+        <p>Win %</p>
+        <p>Kills</p>
+        <p>K/D</p>
+      </div>
+    );
   }
 }

@@ -8,7 +8,10 @@ export class InputField extends React.Component {
         value={this.props.value}
         onChange={this.props.onChange}
         style={{
-          borderColor: this.props.valid ? "rgb(0, 255, 0)" : "rgb(255, 0, 0)"
+          borderColor:
+            this.props.valid && this.props.changed
+              ? "rgb(0, 255, 0)"
+              : "rgb(255, 0, 0)"
         }}
       />
     );
@@ -33,8 +36,7 @@ export class AddButton extends React.Component {
       <button
         onClick={this.props.onClick}
         style={{
-          visibility:
-            this.props.count === 4 ? "hidden" : "visible"
+          visibility: this.props.count === 4 ? "hidden" : "visible"
         }}
       >
         Add
@@ -48,4 +50,3 @@ export class RemoveButton extends React.Component {
     return <button onClick={this.props.onClick}>Remove</button>;
   }
 }
-
