@@ -8,6 +8,7 @@ export class InputField extends React.Component {
         value={this.props.value}
         onChange={this.props.onChange}
         style={{
+          //change color depending on if valid and changed
           borderColor:
             this.props.valid && this.props.changed
               ? "rgb(0, 255, 0)"
@@ -36,6 +37,7 @@ export class AddButton extends React.Component {
       <button
         onClick={this.props.onClick}
         style={{
+          //hide when reached 4 players
           visibility: this.props.count === 4 ? "hidden" : "visible"
         }}
       >

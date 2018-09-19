@@ -6,7 +6,7 @@ export class Player extends React.Component {
       return <Stats name={this.props.name} />;
     } else {
       return (
-        <div className="Player" key={this.props.uniqueId}>
+        <div className="Player">
           <h1 className="playerName">{this.props.name}</h1>
           {this.props.children}
         </div>
@@ -20,10 +20,10 @@ export class Stats extends React.Component {
     return (
       <div className="Player">
         <h1>{this.props.name}</h1>
-        <p>Wins</p>
-        <p>Win %</p>
-        <p>Kills</p>
-        <p>K/D</p>
+        <p>Wins: {this.props.wins}</p>
+        <p>Win %: {this.props.winPercent}</p>
+        <p>Kills: {this.props.kills}</p>
+        <p>K/D: {this.props.kd}</p>
       </div>
     );
   }
