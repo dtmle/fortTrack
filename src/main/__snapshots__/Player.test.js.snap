@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Player should render 1`] = `
+<div
+  className="Player"
+>
+  <h1
+    className="playerName"
+  />
+</div>
+`;
+
+exports[`Stats should render 1`] = `
+<div
+  className="Player"
+>
+  <h1 />
+  <p>
+    Wins: 
+  </p>
+  <p>
+    Win %: 
+  </p>
+  <p>
+    Kills: 
+  </p>
+  <p>
+    K/D: 
+  </p>
+</div>
+`;
