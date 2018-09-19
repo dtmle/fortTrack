@@ -1,4 +1,3 @@
-import Fortnite from "fortnite";
 import React from "react";
 import { Player, Stats } from "./Player";
 import {
@@ -7,6 +6,7 @@ import {
   RemoveButton,
   SendButton
 } from "../input/Buttons";
+import { getStats } from "../api/Call";
 
 export class PlayerList extends React.Component {
   constructor(props) {
@@ -102,21 +102,27 @@ export class PlayerList extends React.Component {
       //else get try to get stats
     } else {
       this.setState({ loading: true });
-      const players = await this.getStats();
-      //if the return has search property, it's bad
-      if (players.search !== undefined) {
-        let allPlayers = [...this.state.players];
-        let badName = allPlayers[players.badIndex];
-        badName.valid = false;
-        //set new players, with valid being false for the invalid named player
-        this.setState({ players: allPlayers, loading: false });
-      } else {
-        //else set players and their stats, and search
+      const players = await getStats(this.state.players);
+      let valid = true;
+      players.forEach(ele => {
+        if (!ele.valid) {
+          valid = false;
+        }
+      });
+      if (valid) {
+        //set players and their stats, and search
         this.setState({
           players: players,
           searching: true,
           loading: false,
           buttonPhrase: "Compare again"
+        });
+      } else {
+        this.setState({
+          players: players,
+          searching: false,
+          loading: false,
+          buttonPhrase: "Player name does not exist!"
         });
       }
     }
@@ -131,10 +137,10 @@ export class PlayerList extends React.Component {
           <Stats
             key={"stat_" + (i + 1)}
             name={ele.name}
-            wins={ele.stats.wins}
-            winPercent={ele.stats.winPercent}
-            kills={ele.stats.kills}
-            kd={ele.stats.kd}
+            wins={ele.stats.lifeTimeStats.wins}
+            winPercent={ele.stats.lifeTimeStats.winPercent}
+            kills={ele.stats.lifeTimeStats.kills}
+            kd={ele.stats.lifeTimeStats.kd}
           />
         );
       } else {
@@ -156,32 +162,6 @@ export class PlayerList extends React.Component {
       }
     });
     return players;
-  }
-
-  async getStats() {
-    const client = new Fortnite("OBSCURED FOR NOW");
-    let players = [...this.state.players];
-    let invalidIndex = "";
-    //try to fetch player stats from api
-    try {
-      for (let i = 0; i < players.length; i++) {
-        invalidIndex = i;
-        let currPlayer = players[i];
-        //if stats is already defined, skip current player
-        if (currPlayer.stats.wins !== undefined) {
-          continue;
-        }
-        let res = await client.user(currPlayer.name, "pc");
-        currPlayer.stats.wins = res.stats.lifetime[8]["Wins"];
-        currPlayer.stats.winPercent = res.stats.lifetime[9]["Win%"];
-        currPlayer.stats.kills = res.stats.lifetime[10]["Kills"];
-        currPlayer.stats.kd = res.stats.lifetime[11]["K/d"];
-      }
-      return players;
-    } catch (err) {
-      //return search and badIndex to disallow switching to search mode if invalid name exists
-      return { search: false, badIndex: invalidIndex };
-    }
   }
 
   render() {
