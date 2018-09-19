@@ -7,7 +7,7 @@ export class Player extends React.Component {
     } else {
       return (
         <div className="Player">
-          <h1 className="playerName">{this.props.name}</h1>
+          <h2 className="playerName">{this.props.name}</h2>
           {this.props.children}
         </div>
       );

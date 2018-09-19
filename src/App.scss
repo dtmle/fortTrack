@@ -1,0 +1,26 @@
+.App {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  height: 100%;
+
+  .Container {
+    text-align: center;
+    height: 100%;
+
+    .PlayerList {
+      display: grid;
+      grid-template-columns: 50% 50%;
+
+      .Player {
+        border-style: solid;
+        display: inline-grid;
+        width: 25vw;
+        height: 33vh;
+        margin: auto;
+        margin-bottom: 6vh;
+
+        
+      }
+    }
+  }
+}

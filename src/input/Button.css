@@ -1,0 +1,24 @@
+.InputField {
+  text-align: center;
+  height: 40%;
+  width: 66%;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.RadioGroup ul {
+  list-style: none;
+  padding: 0;
+}
+
+.RadioGroup ul .RadioOption {
+  border-style: solid none solid none;
+  border-width: 1px;
+  width: 33%;
+  margin-bottom: 2vh;
+}
+
+.RemoveButton {
+  position: absolute;
+}
+/*# sourceMappingURL=Button.css.map */

@@ -1,8 +1,30 @@
 .App {
-  text-align: center;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  height: 100%;
 }
 
-.Player {
-  display: inline-block;
-  width: 25%;
+.App .Container {
+  text-align: center;
+  height: 100%;
 }
+
+.App .Container .PlayerList {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+}
+
+.App .Container .PlayerList .Player {
+  border-style: solid;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  width: 25vw;
+  height: 33vh;
+  margin: auto;
+  margin-bottom: 6vh;
+}
+/*# sourceMappingURL=App.css.map */

@@ -4,7 +4,8 @@ import {
   InputField,
   AddButton,
   RemoveButton,
-  SendButton
+  SendButton,
+  RadioGroup
 } from "../input/Buttons";
 import { getStats } from "../api/Call";
 
@@ -16,7 +17,8 @@ export class PlayerList extends React.Component {
       players: [
         {
           //name, validity, inputField changed, stats
-          name: "Player 1",
+          name: "",
+          platform: "pc",
           valid: true,
           changed: false,
           stats: {}
@@ -29,6 +31,7 @@ export class PlayerList extends React.Component {
     };
     this.handleRemoveClick = this.handleRemoveClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -64,13 +67,23 @@ export class PlayerList extends React.Component {
     }
   }
 
+  handleRadioChange(e, i) {
+    const selected = e.target.value;
+    let players = [...this.state.players];
+    players[i].platform = selected;
+    this.setState({
+      players: players,
+    })
+  }
+
   handleAddClick() {
     //make sure 4 is max
     if (this.state.players.length < 4) {
       let players = [...this.state.players];
       //push new empty player
       players.push({
-        name: "Player " + (players.length + 1),
+        name: "",
+        platform: "pc",
         valid: true,
         changed: false,
         stats: {}
@@ -79,7 +92,8 @@ export class PlayerList extends React.Component {
     }
   }
 
-  async handleSubmit() {
+  async handleSubmit(e) {
+    e.preventDefault();
     //check if all players have been changed from default
     let changed = true;
     this.state.players.forEach(ele => {
@@ -157,6 +171,7 @@ export class PlayerList extends React.Component {
             ) : (
               ""
             )}
+            <RadioGroup onChange={e => this.handleRadioChange(e, i)} />
           </Player>
         );
       }
@@ -167,7 +182,7 @@ export class PlayerList extends React.Component {
   render() {
     const players = this.makePlayers();
     return (
-      <div>
+      <div className="Container">
         <div className="PlayerList">{players}</div>
         {this.state.loading ? (
           <div className="loading">
