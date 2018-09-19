@@ -1,20 +1,39 @@
 import React from "react";
-import { Player } from "./Player";
-import { Stats } from "./Stats";
-import { InputField, AddButton, RemoveButton } from "../input/Buttons";
+import { Player, Stats } from "./Player";
+import {
+  InputField,
+  AddButton,
+  RemoveButton,
+  SendButton
+} from "../input/Buttons";
+import { getStats } from "../api/Call";
 
 export class PlayerList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: ["Player 1"],
-      valid: [true]
+      //player holder
+      players: [
+        {
+          //name, validity, inputField changed, stats
+          name: "Player 1",
+          valid: true,
+          changed: false,
+          stats: {}
+        }
+      ],
+      //state for submit button pressed & all inputs valid
+      searching: false,
+      loading: false,
+      buttonPhrase: "Who da best?"
     };
     this.handleRemoveClick = this.handleRemoveClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleRemoveClick(_, i) {
+    //filter out the index being removed
     if (this.state.players.length > 1) {
       this.setState({
         players: this.state.players.filter((_, ind) => {
@@ -25,43 +44,119 @@ export class PlayerList extends React.Component {
   }
 
   handleChange(event, i) {
+    //get value from inputField
     let val = event.target.value;
-    let players = Object.assign([], this.state.players);
-    let validList = Object.assign([], this.state.valid);
-    players[i] = val;
+    let players = [...this.state.players];
+    players[i].name = val;
+    //if value length is less than 3, its a bad display name
     if (val.length < 3) {
-      validList[i] = false;
-      this.setState({ players: players, valid: validList });
+      //set both valid and changed to false
+      players[i].valid = players[i].changed = false;
+      this.setState({ players: players });
     } else {
-      validList[i] = true;
-      this.setState({ players: players, valid: validList });
+      //else if changed, reset stats and set valid and changed to true
+      players[i].valid = players[i].changed = true;
+      players[i].stats = {};
+      this.setState({
+        players: players,
+        buttonPhrase: "Who da best?"
+      });
     }
   }
 
   handleAddClick() {
-    console.log(this);
+    //make sure 4 is max
     if (this.state.players.length < 4) {
-      let players = Object.assign([], this.state.players);
-      let validList = Object.assign([], this.state.valid);
-      players.push("Player " + (players.length + 1));
-      validList.push(true);
-      this.setState({ players: players, valid: validList });
+      let players = [...this.state.players];
+      //push new empty player
+      players.push({
+        name: "Player " + (players.length + 1),
+        valid: true,
+        changed: false,
+        stats: {}
+      });
+      this.setState({ players: players });
+    }
+  }
+
+  async handleSubmit() {
+    //check if all players have been changed from default
+    let changed = true;
+    this.state.players.forEach(ele => {
+      if (!ele.changed) {
+        changed = false;
+      }
+    });
+    //if searching already, switch back to input mode
+    if (this.state.searching) {
+      this.setState({
+        searching: false,
+        buttonPhrase: "Who da best?"
+      });
+      //if not changed, display another message
+    } else if (!changed) {
+      this.setState({
+        searching: false,
+        buttonPhrase: "Player not changed!"
+      });
+      //else get try to get stats
+    } else {
+      this.setState({ loading: true });
+      const players = await getStats(this.state.players);
+      let valid = true;
+      players.forEach(ele => {
+        if (!ele.valid) {
+          valid = false;
+        }
+      });
+      if (valid) {
+        //set players and their stats, and search
+        this.setState({
+          players: players,
+          searching: true,
+          loading: false,
+          buttonPhrase: "Compare again"
+        });
+      } else {
+        this.setState({
+          players: players,
+          searching: false,
+          loading: false,
+          buttonPhrase: "Player name does not exist!"
+        });
+      }
     }
   }
 
   makePlayers() {
+    //map each player
     const players = this.state.players.map((ele, i) => {
-      if (this.props.searching) {
-        return <Stats name={ele} />;
+      //if searching, return stats instead of player
+      if (this.state.searching) {
+        return (
+          <Stats
+            key={"stat_" + (i + 1)}
+            name={ele.name}
+            wins={ele.stats.lifeTimeStats.wins}
+            winPercent={ele.stats.lifeTimeStats.winPercent}
+            kills={ele.stats.lifeTimeStats.kills}
+            kd={ele.stats.lifeTimeStats.kd}
+          />
+        );
       } else {
         return (
-          <Player name={ele} uniqueId={"player_" + (i + 1)}>
+          <Player name={ele.name} key={"player_" + (i + 1)}>
             <InputField
-              value={this.state.players[i]}
+              value={ele.name}
               onChange={e => this.handleChange(e, i)}
-              valid={this.state.valid[i]}
+              valid={ele.valid}
+              changed={ele.changed}
             />
-            <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
+            {this.state.players.length > 1 ? (
+              <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
+            ) : (
+              ""
+            )}
           </Player>
         );
       }
@@ -74,12 +169,24 @@ export class PlayerList extends React.Component {
     return (
       <div>
         <div className="PlayerList">{players}</div>
+        {this.state.loading ? (
+          <div className="loading">
+            <h1>LOADING</h1>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="AddButton">
           <AddButton
             count={this.state.players.length}
             onClick={e => this.handleAddClick(e)}
           />
         </div>
+        <SendButton
+          className="SendButton"
+          text={this.state.buttonPhrase}
+          onClick={this.handleSubmit}
+        />
       </div>
     );
   }
