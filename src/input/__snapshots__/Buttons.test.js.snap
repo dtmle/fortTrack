@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddButton Should render 1`] = `
+<button
+  style={
+    Object {
+      "visibility": "visible",
+    }
+  }
+>
+  Add
+</button>
+`;
+
+exports[`InputField Should render 1`] = `
+<input
+  placeholder="Display Name"
+  style={
+    Object {
+      "borderColor": "rgb(255, 0, 0)",
+    }
+  }
+/>
+`;
+
+exports[`RemoveButton Should render 1`] = `
+<button>
+  Remove
+</button>
+`;
+
+exports[`SendButton Should render 1`] = `
+<input
+  type="submit"
+/>
+`;
