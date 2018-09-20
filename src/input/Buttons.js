@@ -48,6 +48,7 @@ export class AddButton extends React.Component {
       <button
         className={"AddButton " + progress}
         onClick={this.props.onClick}
+        style={{ visibility: this.props.hide ? "hidden" : "visible" }}
       >
         +
       </button>

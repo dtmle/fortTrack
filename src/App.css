@@ -18,6 +18,26 @@
       grid-template-columns: 50% 50%;
 }
 
+.App .Container .PlayerList .fade-enter {
+  opacity: 0;
+}
+
+.App .Container .PlayerList .fade-enter.fade-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 500ms ease-in;
+  transition: opacity 500ms ease-in;
+}
+
+.App .Container .PlayerList .fade-leave {
+  opacity: 1;
+}
+
+.App .Container .PlayerList .fade-leave.fade-leave-active {
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-in;
+}
+
 .App .Container .PlayerList .Player {
   border-style: solid;
   display: -ms-inline-grid;
@@ -34,6 +54,32 @@
   padding: 0 0 5% 0;
   margin: 0;
   height: 5vh;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .App .Container .Stats {

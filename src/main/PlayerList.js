@@ -1,4 +1,5 @@
 import React from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import { Player, Stats } from "./Player";
 import {
   InputField,
@@ -159,7 +160,11 @@ export class PlayerList extends React.Component {
         );
       } else {
         return (
-          <Player name={ele.name} key={"player_" + (i + 1)}>
+          <Player
+            name={ele.name}
+            key={"player_" + (i + 1)}
+            remove={this.state.players[i].remove !== undefined ? true : false}
+          >
             <InputField
               value={ele.name}
               onChange={e => this.handleChange(e, i)}
@@ -183,7 +188,14 @@ export class PlayerList extends React.Component {
     const players = this.makePlayers();
     return (
       <div className="Container">
-        <div className="PlayerList">{players}</div>
+        <ReactCSSTransitionGroup
+          className="PlayerList"
+          transitionName="fade"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          {players}
+        </ReactCSSTransitionGroup>
         {this.state.loading ? (
           <div className="loading">
             <h1>LOADING</h1>
@@ -194,8 +206,9 @@ export class PlayerList extends React.Component {
         <AddButton
           count={this.state.players.length}
           onClick={e => this.handleAddClick(e)}
+          hide={this.state.searching}
         />
-        <br/>
+        <br />
         <SendButton
           className="SendButton"
           text={this.state.buttonPhrase}

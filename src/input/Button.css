@@ -11,6 +11,7 @@
   display: inline-grid;
   border-radius: 100%;
   background-color: #fff;
+  border: 5px solid #e0e0e0;
   width: 4vw;
   height: 4vw;
   margin-bottom: 2.5%;
@@ -24,21 +25,21 @@
 }
 
 .c1 {
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   border-top-color: blue;
 }
 
 .c2 {
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   border-top-color: blue;
   border-right-color: blue;
 }
 
 .c3 {
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   border-top-color: blue;
   border-right-color: blue;
   border-bottom-color: blue;
@@ -46,8 +47,8 @@
 
 .c4 {
   opacity: 0;
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   border-top-color: blue;
   border-right-color: blue;
   border-bottom-color: blue;
@@ -100,14 +101,14 @@
 
 .RadioGroup ul li label span svg {
   opacity: 0.2;
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.75s ease-in-out;
+  transition: 0.75s ease-in-out;
 }
 
 .RadioGroup ul li label span:hover svg {
   opacity: 0.5;
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .RadioGroup ul li label input {
