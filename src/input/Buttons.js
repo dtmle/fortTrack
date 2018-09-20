@@ -1,6 +1,13 @@
 import React from "react";
 import "./Button.css";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDesktop } from "@fortawesome/free-solid-svg-icons";
+import { faXbox, faPlaystation } from "@fortawesome/free-brands-svg-icons";
+
+library.add(faDesktop, faXbox, faPlaystation);
+
 export class InputField extends React.Component {
   render() {
     return (
@@ -70,19 +77,28 @@ export class RadioGroup extends React.Component {
           <li className="RadioOption">
             <label>
               <input type="radio" name="platform" value="pc" defaultChecked />
-              PC
+              <span>
+                <title>Desktop</title>
+                <FontAwesomeIcon icon="desktop" size="2x" />
+              </span>
             </label>
           </li>
           <li className="RadioOption">
             <label>
               <input type="radio" name="platform" value="xbl" />
-              XBL
+              <span>
+                <title>Xbox Live</title>
+                <FontAwesomeIcon icon={["fab", "xbox"]} size="2x" />
+              </span>
             </label>
           </li>
           <li className="RadioOption">
             <label>
               <input type="radio" name="platform" value="psn" />
-              PSN
+              <span>
+                <title>Playstation Network</title>
+                <FontAwesomeIcon icon={["fab", "playstation"]} size="2x" />
+              </span>
             </label>
           </li>
         </ul>

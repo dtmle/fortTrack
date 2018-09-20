@@ -6,8 +6,18 @@
   margin-bottom: 5%;
 }
 
+.AddButton {
+  border-radius: 33%;
+}
+
+.SendButton {
+  border-radius: 33%;
+}
+
 .RadioGroup {
   border-style: solid;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-width: 1px;
   width: 66%;
   margin-left: 16.5%;
@@ -28,6 +38,53 @@
 
 .RadioGroup ul li {
   display: inline-block;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.RadioGroup ul li label {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  height: 100%;
+}
+
+.RadioGroup ul li label span {
+  width: 100%;
+  height: 100%;
+}
+
+.RadioGroup ul li label span svg {
+  opacity: 0.5;
+}
+
+.RadioGroup ul li label span svg path {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.RadioGroup ul li label span:hover svg path {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  fill: green;
+}
+
+.RadioGroup ul li label input {
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.RadioGroup ul li label input:checked ~ span svg {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 1;
+}
+
+.RadioGroup ul li label input:checked ~ span svg path {
+  fill: green;
 }
 
 .RemoveButton {

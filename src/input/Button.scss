@@ -5,8 +5,17 @@
   margin-bottom: 5%;
 }
 
+.AddButton {
+  border-radius: 33%;
+}
+
+.SendButton {
+  border-radius: 33%;
+}
+
 .RadioGroup {
   border-style: solid;
+  box-sizing: border-box;
   border-width: 1px;
   width: 66%;
   margin-left: 16.5%;
@@ -23,6 +32,43 @@
 
     li {
       display: inline-block;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      transition: 0.5s ease-in-out;
+
+      label {
+        transition: 0.5s ease-in-out;
+        height: 100%;
+        span {
+          width: 100%;
+          height: 100%;
+          svg {
+            opacity: 0.5;
+            path {
+              transition: 0.5s;
+            }
+          }
+          &:hover svg path {
+            transition: 0.5s ease-in-out;
+            fill: green;
+          }
+        }
+        input {
+          position: absolute;
+          visibility: hidden;
+          width: 0;
+          height: 0;
+        }
+
+        input:checked ~ span svg {
+          transition: 1s;
+          opacity: 1;
+
+          path {
+            fill: green;
+          }
+        }
+      }
     }
   }
 }
