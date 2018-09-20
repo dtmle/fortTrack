@@ -6,11 +6,49 @@
 }
 
 .AddButton {
-  border-radius: 33%;
+  display: inline-grid;
+  border-radius: 100%;
+  background-color: #fff;
+  width: 4vw;
+  height: 4vw;
+  margin-bottom: 2.5%;
+  font-size: 3vw;
+  line-height: 3vw;
+  outline: none;
+
+  &:hover {
+    background-color: rgb(168, 166, 166);
+  }
+}
+.c1 {
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+}
+.c2 {
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+  border-right-color: blue;
+}
+.c3 {
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+  border-right-color: blue;
+  border-bottom-color: blue;
+}
+
+.c4 {
+  opacity: 0;
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+  border-right-color: blue;
+  border-bottom-color: blue;
+  border-left-color: blue;
 }
 
 .SendButton {
   border-radius: 33%;
+  background-color: #fff;
+  height: 5vh;
 }
 
 .RadioGroup {
@@ -24,6 +62,7 @@
   padding: 5% 0 5% 0;
   p {
     margin: 0;
+    margin-bottom: 5%;
   }
   ul {
     list-style: none;
@@ -34,23 +73,19 @@
       display: inline-block;
       margin-left: 2.5%;
       margin-right: 2.5%;
-      transition: 0.5s ease-in-out;
 
       label {
-        transition: 0.5s ease-in-out;
         height: 100%;
         span {
           width: 100%;
           height: 100%;
           svg {
-            opacity: 0.5;
-            path {
-              transition: 0.5s;
-            }
+            opacity: 0.2;
+            transition: 1s ease-in-out;
           }
-          &:hover svg path {
-            transition: 0.5s ease-in-out;
-            fill: green;
+          &:hover svg {
+            opacity: 0.5;
+            transition: 1s ease-in-out;
           }
         }
         input {
@@ -61,9 +96,8 @@
         }
 
         input:checked ~ span svg {
-          transition: 1s;
           opacity: 1;
-
+          transition: 1s ease-in-out;
           path {
             fill: green;
           }

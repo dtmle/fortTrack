@@ -72,8 +72,8 @@ export class PlayerList extends React.Component {
     let players = [...this.state.players];
     players[i].platform = selected;
     this.setState({
-      players: players,
-    })
+      players: players
+    });
   }
 
   handleAddClick() {
@@ -191,12 +191,11 @@ export class PlayerList extends React.Component {
         ) : (
           ""
         )}
-        <div className="AddButton">
-          <AddButton
-            count={this.state.players.length}
-            onClick={e => this.handleAddClick(e)}
-          />
-        </div>
+        <AddButton
+          count={this.state.players.length}
+          onClick={e => this.handleAddClick(e)}
+        />
+        <br/>
         <SendButton
           className="SendButton"
           text={this.state.buttonPhrase}

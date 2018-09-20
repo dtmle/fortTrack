@@ -43,16 +43,13 @@ export class SendButton extends React.Component {
 
 export class AddButton extends React.Component {
   render() {
+    let progress = "c" + this.props.count;
     return (
       <button
-        className="AddButton"
+        className={"AddButton " + progress}
         onClick={this.props.onClick}
-        style={{
-          //hide when reached 4 players
-          visibility: this.props.count === 4 ? "hidden" : "visible"
-        }}
       >
-        Add
+        +
       </button>
     );
   }

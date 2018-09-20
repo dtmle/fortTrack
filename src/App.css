@@ -25,7 +25,7 @@
   width: 25vw;
   height: 36vh;
   margin: auto;
-  margin-bottom: 6vh;
+  margin-bottom: 3vh;
   -ms-flex-line-pack: center;
       align-content: center;
 }
@@ -34,5 +34,17 @@
   padding: 0 0 5% 0;
   margin: 0;
   height: 5vh;
+}
+
+.App .Container .Stats {
+  border-style: solid;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  width: 25vw;
+  height: 36vh;
+  margin: auto;
+  margin-bottom: 3vh;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 /*# sourceMappingURL=App.css.map */

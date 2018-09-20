@@ -7,11 +7,57 @@
 }
 
 .AddButton {
-  border-radius: 33%;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  border-radius: 100%;
+  background-color: #fff;
+  width: 4vw;
+  height: 4vw;
+  margin-bottom: 2.5%;
+  font-size: 3vw;
+  line-height: 3vw;
+  outline: none;
+}
+
+.AddButton:hover {
+  background-color: #a8a6a6;
+}
+
+.c1 {
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+}
+
+.c2 {
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+  border-right-color: blue;
+}
+
+.c3 {
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+  border-right-color: blue;
+  border-bottom-color: blue;
+}
+
+.c4 {
+  opacity: 0;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+  border-top-color: blue;
+  border-right-color: blue;
+  border-bottom-color: blue;
+  border-left-color: blue;
 }
 
 .SendButton {
   border-radius: 33%;
+  background-color: #fff;
+  height: 5vh;
 }
 
 .RadioGroup {
@@ -28,6 +74,7 @@
 
 .RadioGroup p {
   margin: 0;
+  margin-bottom: 5%;
 }
 
 .RadioGroup ul {
@@ -40,13 +87,9 @@
   display: inline-block;
   margin-left: 2.5%;
   margin-right: 2.5%;
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
 }
 
 .RadioGroup ul li label {
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
   height: 100%;
 }
 
@@ -56,18 +99,15 @@
 }
 
 .RadioGroup ul li label span svg {
+  opacity: 0.2;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+.RadioGroup ul li label span:hover svg {
   opacity: 0.5;
-}
-
-.RadioGroup ul li label span svg path {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.RadioGroup ul li label span:hover svg path {
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-  fill: green;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .RadioGroup ul li label input {
@@ -78,9 +118,9 @@
 }
 
 .RadioGroup ul li label input:checked ~ span svg {
-  -webkit-transition: 1s;
-  transition: 1s;
   opacity: 1;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .RadioGroup ul li label input:checked ~ span svg path {

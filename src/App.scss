@@ -17,7 +17,7 @@
         width: 25vw;
         height: 36vh;
         margin: auto;
-        margin-bottom: 6vh;
+        margin-bottom: 3vh;
         align-content: center;
         h2 {
           padding: 0 0 5% 0;
@@ -25,6 +25,16 @@
           height: 5vh;
         }
       }
+    }
+
+    .Stats {
+      border-style: solid;
+      display: inline-grid;
+      width: 25vw;
+      height: 36vh;
+      margin: auto;
+      margin-bottom: 3vh;
+      align-content: center;
     }
   }
 }
