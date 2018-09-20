@@ -1,21 +1,33 @@
 .InputField {
   text-align: center;
-  height: 40%;
   width: 66%;
   -ms-grid-column-align: center;
       justify-self: center;
+  margin-bottom: 5%;
+}
+
+.RadioGroup {
+  border-style: solid;
+  border-width: 1px;
+  width: 66%;
+  margin-left: 16.5%;
+  margin-top: 5%;
+  font-size: 1rem;
+  padding: 5% 0 5% 0;
+}
+
+.RadioGroup p {
+  margin: 0;
 }
 
 .RadioGroup ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.RadioGroup ul .RadioOption {
-  border-style: solid none solid none;
-  border-width: 1px;
-  width: 33%;
-  margin-bottom: 2vh;
+.RadioGroup ul li {
+  display: inline-block;
 }
 
 .RemoveButton {

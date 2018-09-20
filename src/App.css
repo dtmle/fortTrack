@@ -23,8 +23,16 @@
   display: -ms-inline-grid;
   display: inline-grid;
   width: 25vw;
-  height: 33vh;
+  height: 36vh;
   margin: auto;
   margin-bottom: 6vh;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.App .Container .PlayerList .Player h2 {
+  padding: 0 0 5% 0;
+  margin: 0;
+  height: 5vh;
 }
 /*# sourceMappingURL=App.css.map */
