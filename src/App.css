@@ -11,15 +11,49 @@ body {
 }
 
 .App .Container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 5% 5% 5%;
+      grid-template-rows: auto 5% 5% 5%;
+  justify-items: center;
   text-align: center;
   height: 100%;
 }
 
+.App .Container .Loading {
+  position: relative;
+  height: 100%;
+  color: #fff;
+}
+
+.App .Container .Loading .load-enter {
+  opacity: 0;
+}
+
+.App .Container .Loading .load-enter.load-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 750ms ease-in-out;
+  transition: opacity 750ms ease-in-out;
+}
+
+.App .Container .Loading .load-leave {
+  opacity: 1;
+}
+
+.App .Container .Loading .load-leave.load-leave-active {
+  opacity: 0;
+  -webkit-transition: opacity 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out;
+}
+
 .App .Container .PlayerList {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 50% 50%;
-      grid-template-columns: 50% 50%;
+  justify-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .App .Container .PlayerList {
+    width: 100%;
+  }
 }
 
 .App .Container .PlayerList .fade-enter {
@@ -28,8 +62,8 @@ body {
 
 .App .Container .PlayerList .fade-enter.fade-enter-active {
   opacity: 1;
-  -webkit-transition: opacity 500ms ease-in;
-  transition: opacity 500ms ease-in;
+  -webkit-transition: opacity 750ms ease-in-out;
+  transition: opacity 750ms ease-in-out;
 }
 
 .App .Container .PlayerList .fade-leave {
@@ -38,8 +72,8 @@ body {
 
 .App .Container .PlayerList .fade-leave.fade-leave-active {
   opacity: 0;
-  -webkit-transition: opacity 300ms ease-in;
-  transition: opacity 300ms ease-in;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
 .App .Container .PlayerList .Player {
@@ -51,7 +85,9 @@ body {
   width: 25vw;
   height: 36vh;
   margin: auto;
-  margin-bottom: 3vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  margin-bottom: 1vw;
   -ms-flex-line-pack: center;
       align-content: center;
 }
@@ -71,26 +107,29 @@ body {
   padding: 0 0 5% 0;
   margin: 0;
   height: 5vh;
-  word-break: break-all;
-  overflow-y: hidden;
   color: white;
 }
 
 .App .Container .PlayerList .Player .StatContainer {
   position: absolute;
-  text-align: justify;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -20%);
+          transform: translate(-50%, -20%);
+  width: 100%;
 }
 
 .App .Container .PlayerList .Player .StatContainer p {
-  padding: 0;
+  padding: 2% 0 2% 0;
   margin: 0;
 }
 
 .App .Container .PlayerList .Player .Tip {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   padding: 0;
   margin: 0;
   font-size: 0.75rem;

@@ -13,10 +13,10 @@ export class InputField extends React.Component {
     return (
       <input
         className="InputField"
-        placeholder="Display Name"
+        placeholder="Name"
         value={this.props.value}
         onChange={this.props.onChange}
-        maxLength="30"
+        maxLength="16"
         style={{
           //change color depending on if valid and changed
           borderColor:
@@ -71,7 +71,6 @@ export class RadioGroup extends React.Component {
   render() {
     return (
       <form className="RadioGroup" onChange={this.props.onChange}>
-        <p>Platform</p>
         <ul>
           <li className="RadioOption">
             <label>

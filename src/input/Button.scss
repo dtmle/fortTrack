@@ -15,11 +15,19 @@ $colors: (
   border-left-width: 0;
   border-right-width: 0;
   border-bottom-width: 2px;
-  width: 66%;
+  width: 15%;
+  transition: 0.5s ease-in;
+  opacity: 0.7;
+
+  &:focus {
+      width: 33%;
+      opacity: 1;
+      transition: 0.5s ease-in;
+  }
 }
 .AddButton {
   font-size: 2rem;
-  line-height: 2vw;
+  line-height: 1.5vw;
   display: inline-grid;
   border: 5px solid rgb(255, 255, 255);
   border-radius: 100%;
@@ -27,6 +35,7 @@ $colors: (
   color: #fff;
   width: 3vw;
   height: 3vw;
+  padding: 0;
   margin-bottom: 2.5%;
   outline: none;
   @media only screen and (max-width: 600px) {
@@ -67,7 +76,9 @@ $colors: (
   background-color: map-get($colors, orange);
   color: #fff;
   height: 5vh;
+  width: 15vw;
   transition: 0.5s;
+  outline: none;
   &:hover {
     background-color: #cf7d19;
     transition: 0.5s ease-in-out;
@@ -83,11 +94,6 @@ $colors: (
   margin-top: 5%;
   font-size: 1rem;
   padding: 5% 0 5% 0;
-  p {
-    margin: 0;
-    margin-bottom: 5%;
-    color: #fff;
-  }
   ul {
     list-style: none;
     padding: 0;
