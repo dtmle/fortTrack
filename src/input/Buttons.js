@@ -16,12 +16,13 @@ export class InputField extends React.Component {
         placeholder="Display Name"
         value={this.props.value}
         onChange={this.props.onChange}
+        maxLength="30"
         style={{
           //change color depending on if valid and changed
           borderColor:
             this.props.valid && this.props.changed
-              ? "rgb(0, 255, 0)"
-              : "rgb(255, 0, 0)"
+              ? "#21D3B0"
+              : "#A63D40"
         }}
       />
     );

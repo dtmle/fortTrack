@@ -18,12 +18,14 @@ export class Player extends React.Component {
 export class Stats extends React.Component {
   render() {
     return (
-      <div className="Stats">
+      <div className="Player">
         <h2>{this.props.name}</h2>
-        <p>Wins: {this.props.wins}</p>
-        <p>Win %: {this.props.winPercent}</p>
-        <p>Kills: {this.props.kills}</p>
-        <p>K/D: {this.props.kd}</p>
+        <div className="StatContainer">
+          <p>Wins: {this.props.wins}</p>
+          <p>Win %: {this.props.winPercent}</p>
+          <p>Kills: {this.props.kills}</p>
+          <p>K/D: {this.props.kd}</p>
+        </div>
       </div>
     );
   }

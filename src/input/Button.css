@@ -1,68 +1,91 @@
 .InputField {
   text-align: center;
-  width: 66%;
   -ms-grid-column-align: center;
       justify-self: center;
-  margin-bottom: 5%;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 2px;
+  width: 66%;
 }
 
 .AddButton {
+  font-size: 2rem;
+  line-height: 2vw;
   display: -ms-inline-grid;
   display: inline-grid;
+  border: 5px solid white;
   border-radius: 100%;
-  background-color: #fff;
-  border: 5px solid #e0e0e0;
-  width: 4vw;
-  height: 4vw;
+  background-color: #e959d5;
+  color: #fff;
+  width: 3vw;
+  height: 3vw;
   margin-bottom: 2.5%;
-  font-size: 3vw;
-  line-height: 3vw;
   outline: none;
 }
 
+@media only screen and (max-width: 600px) {
+  .AddButton {
+    width: 5vh;
+    height: 5vh;
+    font-size: 3vh;
+  }
+}
+
 .AddButton:hover {
-  background-color: #a8a6a6;
+  background-color: #bb50e1;
 }
 
 .c1 {
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
+  border-top-color: #bb50e1;
 }
 
 .c2 {
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
-  border-right-color: blue;
+  border-top-color: #bb50e1;
+  border-right-color: #bb50e1;
 }
 
 .c3 {
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
-  border-right-color: blue;
-  border-bottom-color: blue;
+  border-top-color: #bb50e1;
+  border-right-color: #bb50e1;
+  border-bottom-color: #bb50e1;
 }
 
 .c4 {
   opacity: 0;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
-  border-right-color: blue;
-  border-bottom-color: blue;
-  border-left-color: blue;
+  border-top-color: #bb50e1;
+  border-right-color: #bb50e1;
+  border-bottom-color: #bb50e1;
+  border-left-color: #bb50e1;
 }
 
 .SendButton {
   border-radius: 33%;
-  background-color: #fff;
+  border-style: none;
+  background-color: #fd991f;
+  color: #fff;
   height: 5vh;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.SendButton:hover {
+  background-color: #cf7d19;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .RadioGroup {
-  border-style: solid;
+  position: absolute;
+  bottom: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-width: 1px;
@@ -76,6 +99,7 @@
 .RadioGroup p {
   margin: 0;
   margin-bottom: 5%;
+  color: #fff;
 }
 
 .RadioGroup ul {
@@ -125,10 +149,27 @@
 }
 
 .RadioGroup ul li label input:checked ~ span svg path {
-  fill: green;
+  fill: #bb50e1;
 }
 
 .RemoveButton {
   position: absolute;
+  border-style: none;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background-color: #437eb3;
+  color: #fff;
+  right: 0;
+  height: 3vh;
+  width: 3vh;
+  -webkit-transition: 0.25s ease-in;
+  transition: 0.25s ease-in;
+  outline: none;
+}
+
+.RemoveButton:hover {
+  background-color: #3a6e9b;
+  -webkit-transition: 0.25s ease-in;
+  transition: 0.25s ease-in;
 }
 /*# sourceMappingURL=Button.css.map */

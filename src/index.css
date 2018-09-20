@@ -13,3 +13,9 @@ html, body {
   grid-template-columns: auto 55% auto;
   grid-template-rows: 2.5% 95% 2.5%;
 }
+
+@media only screen and (max-width: 600px) {
+  #root {
+    grid-template-columns: auto 100% auto;
+  }
+}

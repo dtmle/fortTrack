@@ -1,3 +1,7 @@
+body {
+  background-color: #151515;
+}
+
 .App {
   -ms-grid-column: 2;
       grid-column-start: 2;
@@ -39,7 +43,9 @@
 }
 
 .App .Container .PlayerList .Player {
-  border-style: solid;
+  position: relative;
+  background-color: #00a1e0;
+  border-radius: 5%;
   display: -ms-inline-grid;
   display: inline-grid;
   width: 25vw;
@@ -50,10 +56,45 @@
       align-content: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .App .Container .PlayerList .Player {
+    width: 90%;
+  }
+}
+
 .App .Container .PlayerList .Player h2 {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   padding: 0 0 5% 0;
   margin: 0;
   height: 5vh;
+  word-break: break-all;
+  overflow-y: hidden;
+  color: white;
+}
+
+.App .Container .PlayerList .Player .StatContainer {
+  position: absolute;
+  text-align: justify;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.App .Container .PlayerList .Player .StatContainer p {
+  padding: 0;
+  margin: 0;
+}
+
+.App .Container .PlayerList .Player .Tip {
+  padding: 0;
+  margin: 0;
+  font-size: 0.75rem;
+  color: #a63d40;
 }
 
 @-webkit-keyframes slideIn {
@@ -80,17 +121,5 @@
             transform: translateX(0);
     opacity: 1;
   }
-}
-
-.App .Container .Stats {
-  border-style: solid;
-  display: -ms-inline-grid;
-  display: inline-grid;
-  width: 25vw;
-  height: 36vh;
-  margin: auto;
-  margin-bottom: 3vh;
-  -ms-flex-line-pack: center;
-      align-content: center;
 }
 /*# sourceMappingURL=App.css.map */

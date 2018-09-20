@@ -28,7 +28,8 @@ export class PlayerList extends React.Component {
       //state for submit button pressed & all inputs valid
       searching: false,
       loading: false,
-      buttonPhrase: "Who da best?"
+      buttonPhrase: "COMPARE",
+      tip: ""
     };
     this.handleRemoveClick = this.handleRemoveClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -51,19 +52,23 @@ export class PlayerList extends React.Component {
     //get value from inputField
     let val = event.target.value;
     let players = [...this.state.players];
+    players[i].changed = true;
     players[i].name = val;
     //if value length is less than 3, its a bad display name
     if (val.length < 3) {
-      //set both valid and changed to false
-      players[i].valid = players[i].changed = false;
-      this.setState({ players: players });
+      //set valid to false
+      players[i].valid = false;
+      this.setState({
+        players: players,
+        tip: "Player name must be atleast 3 characters"
+      });
     } else {
-      //else if changed, reset stats and set valid and changed to true
-      players[i].valid = players[i].changed = true;
+      //else if changed, reset stats and set valid to true
+      players[i].valid = true;
       players[i].stats = {};
       this.setState({
         players: players,
-        buttonPhrase: "Who da best?"
+        tip: ""
       });
     }
   }
@@ -72,6 +77,9 @@ export class PlayerList extends React.Component {
     const selected = e.target.value;
     let players = [...this.state.players];
     players[i].platform = selected;
+    if(players[i].name.length > 2) {
+      players[i].valid = true;
+    }
     this.setState({
       players: players
     });
@@ -97,24 +105,33 @@ export class PlayerList extends React.Component {
     e.preventDefault();
     //check if all players have been changed from default
     let changed = true;
+    let valid = true;
     this.state.players.forEach(ele => {
       if (!ele.changed) {
         changed = false;
+      }
+      if (!ele.valid) {
+        valid = false;
       }
     });
     //if searching already, switch back to input mode
     if (this.state.searching) {
       this.setState({
         searching: false,
-        buttonPhrase: "Who da best?"
+        buttonPhrase: "COMPARE"
       });
       //if not changed, display another message
     } else if (!changed) {
       this.setState({
         searching: false,
-        buttonPhrase: "Player not changed!"
+        tip: "Player name not changed"
       });
       //else get try to get stats
+    } else if (!valid) {
+      this.setState({
+        searching: false,
+        tip: "Player name is invalid"
+      });
     } else {
       this.setState({ loading: true });
       const players = await getStats(this.state.players);
@@ -130,14 +147,13 @@ export class PlayerList extends React.Component {
           players: players,
           searching: true,
           loading: false,
-          buttonPhrase: "Compare again"
+          buttonPhrase: "COMPARE AGAIN"
         });
       } else {
         this.setState({
-          players: players,
           searching: false,
           loading: false,
-          buttonPhrase: "Player name does not exist!"
+          tip: "Player name does not exist"
         });
       }
     }
@@ -171,11 +187,15 @@ export class PlayerList extends React.Component {
               valid={ele.valid}
               changed={ele.changed}
             />
+
+            <p className="Tip">{this.state.tip}</p>
+
             {this.state.players.length > 1 ? (
               <RemoveButton onClick={e => this.handleRemoveClick(e, i)} />
             ) : (
               ""
             )}
+
             <RadioGroup onChange={e => this.handleRadioChange(e, i)} />
           </Player>
         );

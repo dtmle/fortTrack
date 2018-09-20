@@ -1,59 +1,81 @@
+$colors: (
+  blue: #00a1e0,
+  green: #21d3b0,
+  orange: #fd991f,
+  red: #a63d40,
+  purp: #bb50e1,
+  pink: #e959d5,
+  black: #151515
+);
+
 .InputField {
   text-align: center;
-  width: 66%;
   justify-self: center;
-  margin-bottom: 5%;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 2px;
+  width: 66%;
 }
-
 .AddButton {
+  font-size: 2rem;
+  line-height: 2vw;
   display: inline-grid;
+  border: 5px solid rgb(255, 255, 255);
   border-radius: 100%;
-  background-color: #fff;
-  border: 5px solid rgb(224, 224, 224);
-  width: 4vw;
-  height: 4vw;
+  background-color: map-get($colors, pink);
+  color: #fff;
+  width: 3vw;
+  height: 3vw;
   margin-bottom: 2.5%;
-  font-size: 3vw;
-  line-height: 3vw;
   outline: none;
-
+  @media only screen and (max-width: 600px) {
+    width: 5vh;
+    height: 5vh;
+    font-size: 3vh;
+  }
   &:hover {
-    background-color: rgb(168, 166, 166);
+    background-color: map-get($colors, purp);
   }
 }
 .c1 {
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
+  border-top-color: map-get($colors, purp);
 }
 .c2 {
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
-  border-right-color: blue;
+  border-top-color: map-get($colors, purp);
+  border-right-color: map-get($colors, purp);
 }
 .c3 {
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
-  border-right-color: blue;
-  border-bottom-color: blue;
+  border-top-color: map-get($colors, purp);
+  border-right-color: map-get($colors, purp);
+  border-bottom-color: map-get($colors, purp);
 }
-
 .c4 {
   opacity: 0;
   transition: 0.5s ease-in-out;
-  border-top-color: blue;
-  border-right-color: blue;
-  border-bottom-color: blue;
-  border-left-color: blue;
+  border-top-color: map-get($colors, purp);
+  border-right-color: map-get($colors, purp);
+  border-bottom-color: map-get($colors, purp);
+  border-left-color: map-get($colors, purp);
 }
-
 .SendButton {
   border-radius: 33%;
-  background-color: #fff;
+  border-style: none;
+  background-color: map-get($colors, orange);
+  color: #fff;
   height: 5vh;
+  transition: 0.5s;
+  &:hover {
+    background-color: #cf7d19;
+    transition: 0.5s ease-in-out;
+  }
 }
-
 .RadioGroup {
-  border-style: solid;
+  position: absolute;
+  bottom: 0;
   box-sizing: border-box;
   border-width: 1px;
   width: 66%;
@@ -64,17 +86,16 @@
   p {
     margin: 0;
     margin-bottom: 5%;
+    color: #fff;
   }
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
-
     li {
       display: inline-block;
       margin-left: 2.5%;
       margin-right: 2.5%;
-
       label {
         height: 100%;
         span {
@@ -95,19 +116,31 @@
           width: 0;
           height: 0;
         }
-
         input:checked ~ span svg {
           opacity: 1;
           transition: 1s ease-in-out;
           path {
-            fill: green;
+            fill: map-get($colors, purp);
           }
         }
       }
     }
   }
 }
-
 .RemoveButton {
   position: absolute;
+  border-style: none;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background-color: #437eb3;
+  color: #fff;
+  right: 0;
+  height: 3vh;
+  width: 3vh;
+  transition: 0.25s ease-in;
+  outline: none;
+  &:hover {
+    background-color: #3a6e9b;
+    transition: 0.25s ease-in;
+  }
 }

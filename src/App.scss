@@ -1,3 +1,17 @@
+$colors: (
+  blue: #00a1e0,
+  green: #21d3b0,
+  yellow: #FAEC53,
+  red: #a63d40,
+  purp: #bb50e1,
+  pink: #e959d5,
+  black: #151515
+);
+
+body {
+  background-color: map-get($colors, black);
+}
+
 .App {
   grid-column-start: 2;
   grid-row-start: 2;
@@ -30,18 +44,50 @@
       }
 
       .Player {
-        border-style: solid;
+        position: relative;
+        background-color: map-get($colors, blue);
+        border-radius: 5%;
         display: inline-grid;
         width: 25vw;
         height: 36vh;
         margin: auto;
         margin-bottom: 3vh;
         align-content: center;
+
+        @media only screen and (max-width: 600px) {
+          width: 90%;
+        }
         // animation: slideIn 1s ease-in-out forwards;
         h2 {
+          position: absolute;
+          top: 15%;
+          left: 50%;
+          transform: translateX(-50%);
           padding: 0 0 5% 0;
           margin: 0;
           height: 5vh;
+          word-break: break-all;
+          overflow-y: hidden;
+          color: white;
+        }
+
+        .StatContainer {
+          position: absolute;
+          text-align: justify;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          p {
+            padding: 0;
+            margin: 0;
+          }
+        }
+
+        .Tip {
+          padding: 0;
+          margin: 0;
+          font-size: 0.75rem;
+          color: map-get($colors, red);
         }
       }
 
@@ -55,16 +101,6 @@
           opacity: 1;
         }
       }
-    }
-
-    .Stats {
-      border-style: solid;
-      display: inline-grid;
-      width: 25vw;
-      height: 36vh;
-      margin: auto;
-      margin-bottom: 3vh;
-      align-content: center;
     }
   }
 }
