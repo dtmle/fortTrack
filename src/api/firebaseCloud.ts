@@ -1,3 +1,6 @@
+//This file is to be deployed on Google cloud functions.
+//For more info, see here: https://cloud.google.com/functions/
+
 import * as functions from "firebase-functions";
 import Fetch from "node-fetch";
 const url = "https://api.fortnitetracker.com/v1";
