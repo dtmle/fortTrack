@@ -1,0 +1,182 @@
+.InputField {
+  text-align: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 2px;
+  width: 15%;
+  -webkit-transition: 0.5s ease-in;
+  transition: 0.5s ease-in;
+  opacity: 0.7;
+}
+
+.InputField:focus {
+  width: 33%;
+  opacity: 1;
+  -webkit-transition: 0.5s ease-in;
+  transition: 0.5s ease-in;
+}
+
+.AddButton {
+  font-size: 2rem;
+  line-height: 1.5vw;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  border: 5px solid white;
+  border-radius: 100%;
+  background-color: #e959d5;
+  color: #fff;
+  width: 3vw;
+  height: 3vw;
+  padding: 0;
+  margin-bottom: 2.5%;
+  outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .AddButton {
+    width: 5vh;
+    height: 5vh;
+    font-size: 3vh;
+  }
+}
+
+.AddButton:hover {
+  background-color: #bb50e1;
+}
+
+.c1 {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  border-top-color: #bb50e1;
+}
+
+.c2 {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  border-top-color: #bb50e1;
+  border-right-color: #bb50e1;
+}
+
+.c3 {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  border-top-color: #bb50e1;
+  border-right-color: #bb50e1;
+  border-bottom-color: #bb50e1;
+}
+
+.c4 {
+  opacity: 0;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  border-top-color: #bb50e1;
+  border-right-color: #bb50e1;
+  border-bottom-color: #bb50e1;
+  border-left-color: #bb50e1;
+}
+
+.SendButton {
+  border-radius: 33%;
+  border-style: none;
+  background-color: #fd991f;
+  color: #fff;
+  height: 5vh;
+  width: 15vw;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.SendButton:hover {
+  background-color: #cf7d19;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.RadioGroup {
+  position: absolute;
+  bottom: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-width: 1px;
+  width: 66%;
+  margin-left: 16.5%;
+  margin-top: 5%;
+  font-size: 1rem;
+  padding: 5% 0 5% 0;
+}
+
+.RadioGroup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.RadioGroup ul li {
+  display: inline-block;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.RadioGroup ul li label {
+  height: 100%;
+}
+
+.RadioGroup ul li label span {
+  width: 100%;
+  height: 100%;
+}
+
+.RadioGroup ul li label span svg {
+  opacity: 0.2;
+  -webkit-transition: 0.75s ease-in-out;
+  transition: 0.75s ease-in-out;
+}
+
+.RadioGroup ul li label span:hover svg {
+  opacity: 0.5;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.RadioGroup ul li label input {
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.RadioGroup ul li label input:checked ~ span svg {
+  opacity: 1;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+.RadioGroup ul li label input:checked ~ span svg path {
+  fill: #bb50e1;
+}
+
+.RemoveButton {
+  position: absolute;
+  border-style: none;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background-color: #437eb3;
+  color: #fff;
+  right: 0;
+  height: 3vh;
+  width: 3vh;
+  -webkit-transition: 0.25s ease-in;
+  transition: 0.25s ease-in;
+  outline: none;
+}
+
+.RemoveButton:hover {
+  background-color: #3a6e9b;
+  -webkit-transition: 0.25s ease-in;
+  transition: 0.25s ease-in;
+}
+/*# sourceMappingURL=Button.css.map */

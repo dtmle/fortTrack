@@ -1,0 +1,143 @@
+$colors: (
+  blue: #00a1e0,
+  green: #21d3b0,
+  orange: #fd991f,
+  red: #a63d40,
+  purp: #bb50e1,
+  pink: #e959d5,
+  black: #151515
+);
+
+body {
+  background-color: map-get($colors, black);
+}
+
+.App {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  height: 100%;
+
+  .Container {
+    display: grid;
+    grid-template-rows: auto 5% 5% 5%;
+    justify-items: center;
+    text-align: center;
+    height: 100%;
+
+    .Loading {
+      position: relative;
+      height: 100%;
+      color: #fff;
+      .load-enter {
+        opacity: 0;
+      }
+
+      .load-enter.load-enter-active {
+        opacity: 1;
+        transition: opacity 750ms ease-in-out;
+      }
+
+      .load-leave {
+        opacity: 1;
+      }
+
+      .load-leave.load-leave-active {
+        opacity: 0;
+        transition: opacity 250ms ease-in-out;
+      }
+    }
+
+    .PlayerList {
+      justify-items: center;
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+      .fade-enter {
+        opacity: 0;
+      }
+
+      .fade-enter.fade-enter-active {
+        opacity: 1;
+        transition: opacity 750ms ease-in-out;
+      }
+
+      .fade-leave {
+        opacity: 1;
+      }
+
+      .fade-leave.fade-leave-active {
+        opacity: 0;
+        transition: opacity 300ms ease-in-out;
+      }
+
+      .Player {
+        position: relative;
+        background-color: map-get($colors, blue);
+        border-radius: 5%;
+        display: inline-grid;
+        width: 25vw;
+        height: 36vh;
+        margin: auto;
+        margin-right: 1vw;
+        margin-left: 1vw;
+        margin-bottom: 1vw;
+        align-content: center;
+
+        @media only screen and (max-width: 600px) {
+          width: 90%;
+        }
+
+        // animation: slideIn 1s ease-in-out forwards;
+        h2 {
+          position: absolute;
+          top: 15%;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 0 0 5% 0;
+          margin: 0;
+          height: 5vh;
+          color: white;
+        }
+
+        .StatContainer {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -20%);
+          width: 100%;
+          p {
+            padding: 2% 0 2% 0;
+            margin: 0;
+            color: white;
+          }
+          span {
+            color: map-get($colors, orange);
+          }
+        }
+
+        .Tip {
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 0;
+          margin: 0;
+          font-size: 0.75rem;
+          color: map-get($colors, red);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(50%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

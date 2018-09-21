@@ -10,13 +10,12 @@ export async function getStats(players) {
     if (currPlayer.stats.data !== undefined) {
       continue;
     }
-    let result = await stats({ name: currPlayer.name, platform: "pc" });
+    let result = await stats({ name: currPlayer.name, platform: currPlayer.platform });
     if (result.data !== false) {
       currPlayer.stats = result.data;
     } else {
       currPlayer.valid = false;
     }
   }
-  console.log(playerList);
   return playerList;
 }

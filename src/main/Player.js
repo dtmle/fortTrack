@@ -7,7 +7,7 @@ export class Player extends React.Component {
     } else {
       return (
         <div className="Player">
-          <h1 className="playerName">{this.props.name}</h1>
+          <h2 className="playerName">{this.props.name}</h2>
           {this.props.children}
         </div>
       );
@@ -19,11 +19,21 @@ export class Stats extends React.Component {
   render() {
     return (
       <div className="Player">
-        <h1>{this.props.name}</h1>
-        <p>Wins: {this.props.wins}</p>
-        <p>Win %: {this.props.winPercent}</p>
-        <p>Kills: {this.props.kills}</p>
-        <p>K/D: {this.props.kd}</p>
+        <h2>{this.props.name}</h2>
+        <div className="StatContainer">
+          <p>
+            Wins: <span>{this.props.wins}</span>
+          </p>
+          <p>
+            Win Ratio: <span>{this.props.winPercent}</span>
+          </p>
+          <p>
+            Kills: <span>{this.props.kills}</span>
+          </p>
+          <p>
+            K/D: <span>{this.props.kd}</span>
+          </p>
+        </div>
       </div>
     );
   }
