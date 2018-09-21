@@ -2,35 +2,41 @@
 
 exports[`AddButton Should render 1`] = `
 <button
+  className="AddButton cundefined"
   style={
     Object {
       "visibility": "visible",
     }
   }
 >
-  Add
+  +
 </button>
 `;
 
 exports[`InputField Should render 1`] = `
 <input
-  placeholder="Display Name"
+  className="InputField"
+  maxLength="16"
+  placeholder="Name"
   style={
     Object {
-      "borderColor": "rgb(255, 0, 0)",
+      "borderColor": "#A63D40",
     }
   }
 />
 `;
 
 exports[`RemoveButton Should render 1`] = `
-<button>
-  Remove
+<button
+  className="RemoveButton"
+>
+  X
 </button>
 `;
 
 exports[`SendButton Should render 1`] = `
 <input
+  className="SendButton"
   type="submit"
 />
 `;

@@ -4,7 +4,7 @@ exports[`Player should render 1`] = `
 <div
   className="Player"
 >
-  <h1
+  <h2
     className="playerName"
   />
 </div>
@@ -14,18 +14,34 @@ exports[`Stats should render 1`] = `
 <div
   className="Player"
 >
-  <h1 />
-  <p>
-    Wins: 
-  </p>
-  <p>
-    Win %: 
-  </p>
-  <p>
-    Kills: 
-  </p>
-  <p>
-    K/D: 
-  </p>
+  <h2 />
+  <div
+    className="StatContainer"
+  >
+    <p
+      id="wins"
+    >
+      Wins: 
+      <span />
+    </p>
+    <p
+      id="winratio"
+    >
+      Win Ratio: 
+      <span />
+    </p>
+    <p
+      id="kills"
+    >
+      Kills: 
+      <span />
+    </p>
+    <p
+      id="kd"
+    >
+      K/D: 
+      <span />
+    </p>
+  </div>
 </div>
 `;

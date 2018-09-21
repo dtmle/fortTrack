@@ -21,16 +21,16 @@ export class Stats extends React.Component {
       <div className="Player">
         <h2>{this.props.name}</h2>
         <div className="StatContainer">
-          <p>
+          <p id="wins">
             Wins: <span>{this.props.wins}</span>
           </p>
-          <p>
+          <p id="winratio">
             Win Ratio: <span>{this.props.winPercent}</span>
           </p>
-          <p>
+          <p id="kills">
             Kills: <span>{this.props.kills}</span>
           </p>
-          <p>
+          <p id="kd">
             K/D: <span>{this.props.kd}</span>
           </p>
         </div>
