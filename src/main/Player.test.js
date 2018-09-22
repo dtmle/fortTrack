@@ -32,18 +32,26 @@ describe("Stats", () => {
   });
   it("should render wins", () => {
     const component = shallow(<Stats wins={100} />);
-    expect(component.find("#wins").get(0).props.children[1].props.children).toEqual(100);
+    expect(
+      component.find("#wins").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
   it("should render win percent", () => {
     const component = shallow(<Stats winPercent={100} />);
-    expect(component.find("#winratio").get(0).props.children[1].props.children).toEqual(100);
+    expect(
+      component.find("#winratio").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
   it("should render kills", () => {
     const component = shallow(<Stats kills={100} />);
-    expect(component.find("#kills").get(0).props.children[1].props.children).toEqual(100);
+    expect(
+      component.find("#kills").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
   it("should render k/d", () => {
     const component = shallow(<Stats kd={100} />);
-    expect(component.find("#kd").get(0).props.children[1].props.children).toEqual(100);
+    expect(
+      component.find("#kd").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
 });

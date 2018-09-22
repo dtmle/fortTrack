@@ -150,3 +150,22 @@ $colors: (
     transition: 0.25s ease-in;
   }
 }
+
+.StatModeButtons {
+  margin-bottom: 5%;
+  text-align: center;
+
+  label {
+    color: #fff;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: map-get($colors, purp);
+  }
+
+  input {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}

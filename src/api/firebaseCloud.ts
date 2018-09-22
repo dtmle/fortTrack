@@ -1,11 +1,15 @@
-//This file is to be deployed on Google cloud functions.
-//For more info, see here: https://cloud.google.com/functions/
-
 import * as functions from "firebase-functions";
 import Fetch from "node-fetch";
 const url = "https://api.fortnitetracker.com/v1";
-const key = "APIKEY HERE";
+const key = "API_KEY_HERE";
 const header = { headers: { "TRN-Api-Key": key } };
+
+// // Start writing Firebase Functions
+// // https://firebase.google.com/docs/functions/typescript
+//
+// export const helloWorld = functions.https.onRequest((request, response) => {
+//  response.send("Hello from Firebase!");
+// });
 
 const cleanLifetime = function(data) {
   const lifetimeStats = [...data.lifeTimeStats];
@@ -17,9 +21,9 @@ const cleanLifetime = function(data) {
     top12: "",
     top25: "",
     score: "",
-    matchesPlayed: "",
+    matches: "",
     wins: "",
-    winPercent: "",
+    winRatio: "",
     kills: "",
     kd: ""
   };
@@ -30,9 +34,9 @@ const cleanLifetime = function(data) {
   cleanedLifetime.top12 = lifetimeStats[4].value;
   cleanedLifetime.top25 = lifetimeStats[5].value;
   cleanedLifetime.score = lifetimeStats[6].value;
-  cleanedLifetime.matchesPlayed = lifetimeStats[7].value;
+  cleanedLifetime.matches = lifetimeStats[7].value;
   cleanedLifetime.wins = lifetimeStats[8].value;
-  cleanedLifetime.winPercent = lifetimeStats[9].value;
+  cleanedLifetime.winRatio = lifetimeStats[9].value.slice(0,2);
   cleanedLifetime.kills = lifetimeStats[10].value;
   cleanedLifetime.kd = lifetimeStats[11].value;
 
@@ -53,6 +57,12 @@ const cleanStats = function(data) {
     const label = modeMap[mode];
     stats[label] = stats[mode];
     delete stats[mode];
+    for(const prop in stats[label]) {
+      stats[label][prop] = stats[label][prop].value;
+    }
+    const winRat = Number(stats[label].winRatio)/100;
+    const totMatches = stats[label].matches;
+    stats[label].wins = Math.round(totMatches * winRat);
   }
   return stats;
 };

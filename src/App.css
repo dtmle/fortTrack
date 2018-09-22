@@ -100,11 +100,10 @@ body {
 
 .App .Container .PlayerList .Player h2 {
   position: absolute;
-  top: 15%;
+  top: 5%;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  padding: 0 0 5% 0;
   margin: 0;
   height: 5vh;
   color: white;
@@ -114,8 +113,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -20%);
-          transform: translate(-50%, -20%);
+  -webkit-transform: translate(-50%, -35%);
+          transform: translate(-50%, -35%);
   width: 100%;
 }
 

@@ -179,4 +179,23 @@
   -webkit-transition: 0.25s ease-in;
   transition: 0.25s ease-in;
 }
+
+.StatModeButtons {
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+.StatModeButtons label {
+  color: #fff;
+  margin-left: 2%;
+  margin-right: 2%;
+  background-color: #bb50e1;
+}
+
+.StatModeButtons input {
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
 /*# sourceMappingURL=Button.css.map */

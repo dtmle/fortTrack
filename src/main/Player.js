@@ -2,36 +2,61 @@ import React from "react";
 
 export class Player extends React.Component {
   render() {
-    if (this.props.searched && this.props.valid) {
-      return <Stats name={this.props.name} />;
-    } else {
-      return (
-        <div className="Player">
-          <h2 className="playerName">{this.props.name}</h2>
-          {this.props.children}
-        </div>
-      );
-    }
+    return (
+      <div className="Player">
+        <h2 className="playerName">{this.props.name}</h2>
+        {this.props.children}
+      </div>
+    );
   }
 }
 
 export class Stats extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { stats: this.props.stats };
+  }
+
+  getStatsForMode() {
+    const mode = this.props.mode;
+    switch (mode) {
+      case "Total":
+        return this.state.stats.lifeTimeStats;
+      case "Solos":
+        return this.state.stats.stats.solo;
+      case "Duos":
+        return this.state.stats.stats.duo;
+      case "Squads":
+        return this.state.stats.stats.squad;
+      default:
+        return 0;
+    }
+  }
+
   render() {
+    const stats = this.getStatsForMode();
+    const exists = stats !== undefined ? true : false;
     return (
       <div className="Player">
         <h2>{this.props.name}</h2>
         <div className="StatContainer">
+          <p id="score">
+            Score: <span>{exists ? stats.score : 0}</span>
+          </p>
+          <p id="matchesPlayed">
+            # Matches: <span>{exists ? stats.matches : 0}</span>
+          </p>
           <p id="wins">
-            Wins: <span>{this.props.wins}</span>
+            Wins: <span>{exists ? stats.wins : 0}</span>
           </p>
           <p id="winratio">
-            Win Ratio: <span>{this.props.winPercent}</span>
+            Win Ratio: <span>{exists ? stats.winRatio + "%" : "0%"}</span>
           </p>
           <p id="kills">
-            Kills: <span>{this.props.kills}</span>
+            Kills: <span>{exists ? stats.kills : 0}</span>
           </p>
           <p id="kd">
-            K/D: <span>{this.props.kd}</span>
+            K/D: <span>{exists ? stats.kd : 0}</span>
           </p>
         </div>
       </div>

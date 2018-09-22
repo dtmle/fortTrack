@@ -4,6 +4,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Player, Stats } from "./Player";
+import { StatsList } from "./StatsList.js";
 import {
   InputField,
   AddButton,
@@ -152,6 +153,7 @@ export class PlayerList extends React.Component {
       this.setState({ loading: true });
       setTimeout(async () => {
         const players = await getStats(this.state.players);
+        console.log(players);
         let valid = true;
         //go through all players and make sure name is valid
         players.forEach(ele => {
@@ -188,14 +190,7 @@ export class PlayerList extends React.Component {
       //if searching, return stats instead of player
       if (this.state.searching) {
         return (
-          <Stats
-            key={"player_" + ele.key}
-            name={ele.name}
-            wins={ele.stats.lifeTimeStats.wins}
-            winPercent={ele.stats.lifeTimeStats.winPercent}
-            kills={ele.stats.lifeTimeStats.kills}
-            kd={ele.stats.lifeTimeStats.kd}
-          />
+          <Stats key={"player_" + ele.key} name={ele.name} stats={ele.stats} />
         );
       } else {
         return (
@@ -233,15 +228,19 @@ export class PlayerList extends React.Component {
   render() {
     const players = this.makePlayers();
     return (
-      <div className="Container">
-        <ReactCSSTransitionGroup
-          className="PlayerList"
-          transitionName="fade"
-          transitionEnterTimeout={750}
-          transitionLeaveTimeout={300}
-        >
-          {players}
-        </ReactCSSTransitionGroup>
+      <main className="Container">
+        {this.state.searching ? (
+          <StatsList key="StatsList">{players}</StatsList>
+        ) : (
+          <ReactCSSTransitionGroup
+            className="PlayerList"
+            transitionName="fade"
+            transitionEnterTimeout={750}
+            transitionLeaveTimeout={300}
+          >
+            {players}
+          </ReactCSSTransitionGroup>
+        )}
         <ReactCSSTransitionGroup
           className="Loading"
           transitionName="load"
@@ -265,7 +264,7 @@ export class PlayerList extends React.Component {
           text={this.state.buttonPhrase}
           onClick={this.handleSubmit}
         />
-      </div>
+      </main>
     );
   }
 }
