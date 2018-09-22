@@ -96,6 +96,12 @@
   transition: 0.5s ease-in-out;
 }
 
+@media only screen and (max-width: 600px) {
+  .SendButton {
+    width: 50vw;
+  }
+}
+
 .RadioGroup {
   position: absolute;
   bottom: 0;

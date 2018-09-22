@@ -82,6 +82,9 @@ $colors: (
     background-color: #cf7d19;
     transition: 0.5s ease-in-out;
   }
+  @media only screen and (max-width: 600px) {
+    width: 50vw;
+  }
 }
 .RadioGroup {
   position: absolute;

@@ -238,6 +238,7 @@ export class PlayerList extends React.Component {
             transitionEnterTimeout={750}
             transitionLeaveTimeout={300}
           >
+          <h1>Compare Fortnite Stats</h1>
             {players}
           </ReactCSSTransitionGroup>
         )}
