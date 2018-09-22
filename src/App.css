@@ -1,5 +1,5 @@
 body {
-  background-color: #151515;
+  background-color: #dfdfdf;
 }
 
 .App {
@@ -18,6 +18,10 @@ body {
   justify-items: center;
   text-align: center;
   height: 100%;
+}
+
+.App .Container .StatsList {
+  width: 100%;
 }
 
 .App .Container .Loading {

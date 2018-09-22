@@ -18,12 +18,12 @@ export class StatsList extends React.Component {
 
   render() {
     return (
-      <main>
-          <StatModeButtons onClick={this.handleOnClick} />
+      <main className="StatsList">
+        <StatModeButtons onClick={this.handleOnClick} />
         <div className="PlayerList">
-            {React.Children.map(this.props.children, (child)=> {
-                return React.cloneElement(child, {mode: this.state.mode});
-            })}
+          {React.Children.map(this.props.children, child => {
+            return React.cloneElement(child, { mode: this.state.mode });
+          })}
         </div>
       </main>
     );
