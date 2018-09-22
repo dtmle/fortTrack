@@ -18,11 +18,10 @@ $colors: (
   width: 15%;
   transition: 0.5s ease-in;
   opacity: 0.7;
-
   &:focus {
-      width: 33%;
-      opacity: 1;
-      transition: 0.5s ease-in;
+    width: 33%;
+    opacity: 1;
+    transition: 0.5s ease-in;
   }
 }
 .AddButton {
@@ -82,6 +81,9 @@ $colors: (
   &:hover {
     background-color: #cf7d19;
     transition: 0.5s ease-in-out;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 50vw;
   }
 }
 .RadioGroup {
@@ -148,5 +150,48 @@ $colors: (
   &:hover {
     background-color: #3a6e9b;
     transition: 0.25s ease-in;
+  }
+}
+.StatModeButtons {
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  margin-bottom: 1%;
+  label {
+    display: inline-block;
+    width: 20%;
+    height: 33%;
+    span {
+      display: inline-block;
+      background-color: map-get($colors, pink);
+      color: #fff;
+      border-bottom-style: solid;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      width: 100%;
+      height: 100%;
+      transition: 0.25s ease-in-out;
+      &:hover {
+        background-color: map-get($colors, purp);
+        transition: 0.5s ease-in-out;
+      }
+      &:active {
+        opacity: 0.8;
+        transition: 0.1s;
+      }
+    }
+    input {
+      position: absolute;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      margin: 0;
+      &:checked ~ span {
+        border-color: #fff;
+        background-color: map-get($map: $colors, $key: purp);
+        border-bottom-color: map-get($colors, orange);
+        border-bottom-style: solid;
+      }
+    }
   }
 }

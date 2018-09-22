@@ -9,7 +9,7 @@ describe("Player", () => {
   });
   it("should render name", () => {
     const component = shallow(<Player name={"Dennis"} />);
-    expect(component.find("h1").text()).toEqual("Dennis");
+    expect(component.find("h2").text()).toEqual("Dennis");
   });
   it("should render stats if valid & searched", () => {
     const component = render(<Player searched={true} valid={true} />);
@@ -24,7 +24,7 @@ describe("Stats", () => {
   });
   it("should render name", () => {
     const component = shallow(<Stats name={"Dennis"} />);
-    expect(component.find("h1").text()).toEqual("Dennis");
+    expect(component.find("h2").text()).toEqual("Dennis");
   });
   it("should have 4 p's", () => {
     const component = shallow(<Stats name={"Dennis"} />);
@@ -32,18 +32,26 @@ describe("Stats", () => {
   });
   it("should render wins", () => {
     const component = shallow(<Stats wins={100} />);
-    expect(component.find("p").get(0).props.children).toEqual(["Wins: ", 100]);
+    expect(
+      component.find("#wins").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
   it("should render win percent", () => {
     const component = shallow(<Stats winPercent={100} />);
-    expect(component.find("p").get(1).props.children).toEqual(["Win %: ", 100]);
+    expect(
+      component.find("#winratio").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
   it("should render kills", () => {
     const component = shallow(<Stats kills={100} />);
-    expect(component.find("p").get(2).props.children).toEqual(["Kills: ", 100]);
+    expect(
+      component.find("#kills").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
   it("should render k/d", () => {
     const component = shallow(<Stats kd={100} />);
-    expect(component.find("p").get(3).props.children).toEqual(["K/D: ", 100]);
+    expect(
+      component.find("#kd").get(0).props.children[1].props.children
+    ).toEqual(100);
   });
 });

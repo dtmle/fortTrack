@@ -96,6 +96,12 @@
   transition: 0.5s ease-in-out;
 }
 
+@media only screen and (max-width: 600px) {
+  .SendButton {
+    width: 50vw;
+  }
+}
+
 .RadioGroup {
   position: absolute;
   bottom: 0;
@@ -178,5 +184,58 @@
   background-color: #3a6e9b;
   -webkit-transition: 0.25s ease-in;
   transition: 0.25s ease-in;
+}
+
+.StatModeButtons {
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  margin-bottom: 1%;
+}
+
+.StatModeButtons label {
+  display: inline-block;
+  width: 20%;
+  height: 33%;
+}
+
+.StatModeButtons label span {
+  display: inline-block;
+  background-color: #e959d5;
+  color: #fff;
+  border-bottom-style: solid;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.StatModeButtons label span:hover {
+  background-color: #bb50e1;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.StatModeButtons label span:active {
+  opacity: 0.8;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.StatModeButtons label input {
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.StatModeButtons label input:checked ~ span {
+  border-color: #fff;
+  background-color: #bb50e1;
+  border-bottom-color: #fd991f;
+  border-bottom-style: solid;
 }
 /*# sourceMappingURL=Button.css.map */

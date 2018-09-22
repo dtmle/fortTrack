@@ -13,15 +13,15 @@ describe("InputField", () => {
   });
   it("Should have border red if invalid", () => {
     const component = shallow(<InputField valid={false} />);
-    expect(component.props().style.borderColor).toEqual("rgb(255, 0, 0)");
+    expect(component.props().style.borderColor).toEqual("#A63D40");
   });
   it("Should have border red if unchanged", () => {
     const component = shallow(<InputField changed={false} />);
-    expect(component.props().style.borderColor).toEqual("rgb(255, 0, 0)");
+    expect(component.props().style.borderColor).toEqual("#A63D40");
   });
   it("Should have border green if valid & changed", () => {
     const component = shallow(<InputField valid={true} changed={true} />);
-    expect(component.props().style.borderColor).toEqual("rgb(0, 255, 0)");
+    expect(component.props().style.borderColor).toEqual("#21D3B0");
   });
 });
 
@@ -42,11 +42,11 @@ describe("AddButton", () => {
     expect(component).toMatchSnapshot();
   });
   it("Should be visible when count < 4", () => {
-    const component = shallow(<AddButton count={1} />);
+    const component = shallow(<AddButton hide={false} />);
     expect(component.props().style.visibility).toEqual("visible");
   });
   it("Should be hidden when count == 4", () => {
-    const component = shallow(<AddButton count={4} />);
+    const component = shallow(<AddButton hide={true} />);
     expect(component.props().style.visibility).toEqual("hidden");
   });
 });

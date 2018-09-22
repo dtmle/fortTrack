@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -11,7 +12,7 @@ html, body {
   height: 100%;
   display: grid;
   grid-template-columns: auto 55% auto;
-  grid-template-rows: 2.5% 95% 2.5%;
+  grid-template-rows: 95% 2.5%;
 }
 
 @media only screen and (max-width: 600px) {

@@ -20,9 +20,7 @@ export class InputField extends React.Component {
         style={{
           //change color depending on if valid and changed
           borderColor:
-            this.props.valid && this.props.changed
-              ? "#21D3B0"
-              : "#A63D40"
+            this.props.valid && this.props.changed ? "#21D3B0" : "#A63D40"
         }}
       />
     );
@@ -46,13 +44,13 @@ export class AddButton extends React.Component {
   render() {
     let progress = "c" + this.props.count;
     return (
-      <button
+      <input
+        type="button"
+        value="+"
         className={"AddButton " + progress}
         onClick={this.props.onClick}
         style={{ visibility: this.props.hide ? "hidden" : "visible" }}
-      >
-        +
-      </button>
+      />
     );
   }
 }
@@ -60,9 +58,12 @@ export class AddButton extends React.Component {
 export class RemoveButton extends React.Component {
   render() {
     return (
-      <button className="RemoveButton" onClick={this.props.onClick}>
-        X
-      </button>
+      <input
+        type="button"
+        value="X"
+        className="RemoveButton"
+        onClick={this.props.onClick}
+      />
     );
   }
 }
@@ -101,6 +102,31 @@ export class RadioGroup extends React.Component {
           </li>
         </ul>
       </form>
+    );
+  }
+}
+
+export class StatModeButtons extends React.Component {
+  render() {
+    return (
+      <div className="StatModeButtons">
+        <label id="total">
+          <input type="radio" name="mode" value="Total" onClick={this.props.onClick} />
+          <span>Total</span>
+        </label>
+        <label id="solos">
+          <input type="radio" name="mode" value="Solos" onClick={this.props.onClick} />
+          <span>Solos</span>
+        </label>
+        <label id="duos">
+          <input type="radio" name="mode" value="Duos" onClick={this.props.onClick} />
+          <span>Duos</span>
+        </label>
+        <label id="squads">
+          <input type="radio" name="mode" value="Squads" onClick={this.props.onClick} />
+          <span>Squads</span>
+        </label>
+      </div>
     );
   }
 }
