@@ -13,3 +13,5 @@ Look here for more info: https://firebase.google.com/docs/functions/get-started
 
 To run the project, type "npm start" into the terminal.
 
+See the work in progress here: https://dtmle.github.io/fortTrack/
+
