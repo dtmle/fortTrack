@@ -111,20 +111,20 @@ export class StatModeButtons extends React.Component {
     return (
       <div className="StatModeButtons">
         <label id="total">
-          Total
-          <input type="radio" value="Total" onClick={this.props.onClick} />
+          <input type="radio" name="mode" value="Total" onClick={this.props.onClick} />
+          <span>Total</span>
         </label>
         <label id="solos">
-          Solos
-          <input type="radio" value="Solos" onClick={this.props.onClick} />
+          <input type="radio" name="mode" value="Solos" onClick={this.props.onClick} />
+          <span>Solos</span>
         </label>
         <label id="duos">
-          Duos
-          <input type="radio" value="Duos" onClick={this.props.onClick} />
+          <input type="radio" name="mode" value="Duos" onClick={this.props.onClick} />
+          <span>Duos</span>
         </label>
         <label id="squads">
-          Squads
-          <input type="radio" value="Squads" onClick={this.props.onClick} />
+          <input type="radio" name="mode" value="Squads" onClick={this.props.onClick} />
+          <span>Squads</span>
         </label>
       </div>
     );

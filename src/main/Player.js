@@ -40,9 +40,6 @@ export class Stats extends React.Component {
       <div className="Player">
         <h2>{this.props.name}</h2>
         <div className="StatContainer">
-          <p id="score">
-            Score: <span>{exists ? stats.score : 0}</span>
-          </p>
           <p id="matchesPlayed">
             # Matches: <span>{exists ? stats.matches : 0}</span>
           </p>

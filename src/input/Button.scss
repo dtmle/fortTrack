@@ -152,40 +152,43 @@ $colors: (
 .StatModeButtons {
   text-align: center;
   width: 100%;
-  height: 20%;
+  height: 10%;
+  margin-bottom: 1%;
   label {
     display: inline-block;
-    padding-top: 2%;
     width: 20%;
     height: 33%;
-    color: #fff;
-    background-color: map-get($colors, pink);
-    border-left-style: solid;
-    border-right-style: solid;
-    transition: 0.5s ease-in-out;
-    &#total {
-      border-top-left-radius: 25%;
-      border-bottom-left-radius: 25%;
-      border-left-style: none;
+    span {
+      display: inline-block;
+      background-color: map-get($colors, pink);
+      color: #fff;
+      border-bottom-style: solid;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      width: 100%;
+      height: 100%;
+      transition: 0.25s ease-in-out;
+      &:hover {
+        background-color: map-get($colors, purp);
+        transition: 0.5s ease-in-out;
+      }
+      &:active {
+        opacity: 0.8;
+        transition: 0.1s;
+      }
     }
-    &#squads {
-      border-top-right-radius: 25%;
-      border-bottom-right-radius: 25%;
-      border-right-style: none;
+    input {
+      position: absolute;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      margin: 0;
+      &:checked ~ span {
+        border-color: #fff;
+        background-color: map-get($map: $colors, $key: purp);
+        border-bottom-color: map-get($colors, orange);
+        border-bottom-style: solid;
+      }
     }
-    &:hover {
-      background-color: map-get($colors, purp);
-      transition: 0.5s ease-in-out;
-    }
-    &:active {
-      opacity: 0.8;
-      transition: 0.1s;
-    }
-  }
-  input {
-    position: absolute;
-    visibility: hidden;
-    width: 0;
-    height: 0;
   }
 }
